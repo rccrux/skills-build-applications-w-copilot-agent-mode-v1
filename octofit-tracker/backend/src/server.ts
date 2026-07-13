@@ -34,6 +34,11 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
+app.use(((err, _req, res, _next) => {
+  console.error(err);
+  res.status(500).json({ error: 'Internal server error' });
+}) as import('express').ErrorRequestHandler);
+
 app.listen(port, () => {
   console.log(`OctoFit API listening on port ${port}`);
 });
