@@ -20,13 +20,9 @@ export default function Activities() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const endpoint = useMemo(
-    () =>
-      codespaceName
-        ? `https://${codespaceName}-8000.app.github.dev/api/activities/`
-        : 'http://localhost:8000/api/activities/',
-    [],
-  );
+  const endpoint = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/activities/`
+    : 'http://localhost:8000/api/activities/';
 
   useEffect(() => {
     const controller = new AbortController();
