@@ -20,13 +20,9 @@ export default function Teams() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const endpoint = useMemo(
-    () =>
-      codespaceName
-        ? `https://${codespaceName}-8000.app.github.dev/api/teams/`
-        : 'http://localhost:8000/api/teams/',
-    [],
-  );
+  const endpoint = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/teams/`
+    : 'http://localhost:8000/api/teams/';
 
   useEffect(() => {
     const controller = new AbortController();
