@@ -20,13 +20,9 @@ export default function Workouts() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const endpoint = useMemo(
-    () =>
-      codespaceName
-        ? `https://${codespaceName}-8000.app.github.dev/api/workouts/`
-        : 'http://localhost:8000/api/workouts/',
-    [],
-  );
+  const endpoint = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/workouts/`
+    : 'http://localhost:8000/api/workouts/';
 
   useEffect(() => {
     const controller = new AbortController();
