@@ -1,9 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
 const codespaceName = import.meta.env.VITE_CODESPACE_NAME;
-const apiBaseUrl = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api';
 
 function normalizeItems(payload) {
   if (Array.isArray(payload)) return payload;
@@ -23,7 +20,13 @@ export default function Activities() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const endpoint = useMemo(() => `${apiBaseUrl}/activities/`, []);
+  const endpoint = useMemo(
+    () =>
+      codespaceName
+        ? `https://${codespaceName}-8000.app.github.dev/api/activities/`
+        : 'http://localhost:8000/api/activities/',
+    [],
+  );
 
   useEffect(() => {
     const controller = new AbortController();
