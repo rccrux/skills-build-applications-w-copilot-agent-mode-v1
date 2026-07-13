@@ -33,13 +33,9 @@ export default function Leaderboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const endpoint = useMemo(
-    () =>
-      codespaceName
-        ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard/`
-        : 'http://localhost:8000/api/leaderboard/',
-    [],
-  );
+  const endpoint = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard/`
+    : 'http://localhost:8000/api/leaderboard/';
 
   useEffect(() => {
     const controller = new AbortController();
