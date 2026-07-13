@@ -20,13 +20,9 @@ export default function Users() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const endpoint = useMemo(
-    () =>
-      codespaceName
-        ? `https://${codespaceName}-8000.app.github.dev/api/users/`
-        : 'http://localhost:8000/api/users/',
-    [],
-  );
+  const endpoint = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/users/`
+    : 'http://localhost:8000/api/users/';
 
   useEffect(() => {
     const controller = new AbortController();
